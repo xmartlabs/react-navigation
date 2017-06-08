@@ -15,6 +15,7 @@ import { StackNavigator } from 'react-navigation';
 import Banner from './Banner';
 import CustomTabs from './CustomTabs';
 import Drawer from './Drawer';
+import MultipleDrawer from './MultipleDrawer';
 import TabsInDrawer from './TabsInDrawer';
 import ModalStack from './ModalStack';
 import StacksInTabs from './StacksInTabs';
@@ -37,6 +38,11 @@ const ExampleRoutes = {
     name: 'Drawer Example',
     description: 'Android-style drawer navigation',
     screen: Drawer,
+  },
+  MultipleDrawer: {
+    name: 'Multiple Drawer Example',
+    description: 'Add any drawer you need',
+    screen: MultipleDrawer,
   },
   TabsInDrawer: {
     name: 'Drawer + Tabs Example',

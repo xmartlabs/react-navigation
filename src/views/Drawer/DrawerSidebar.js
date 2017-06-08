@@ -43,7 +43,7 @@ class DrawerSidebar extends PureComponent<void, Props, void> {
 
   _getScreenOptions = (routeKey: string) => {
     const DrawerScreen = this.props.router.getComponentForRouteName(
-      'DrawerClose'
+      this.props.drawerCloseRoute,
     );
     const { [routeKey]: childNavigation } = this.props.childNavigationProps;
     return DrawerScreen.router.getScreenOptions(
@@ -83,7 +83,9 @@ class DrawerSidebar extends PureComponent<void, Props, void> {
   };
 
   _onItemPress = ({ route, focused }: DrawerItem) => {
-    this.props.navigation.navigate('DrawerClose');
+    const { navigation, drawerCloseRoute } = this.props;
+    navigation.navigate(drawerCloseRoute);
+
     if (!focused) {
       let subAction;
       // if the child screen is a StackRouter then always navigate to its first screen (see #1914)
