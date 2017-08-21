@@ -34,6 +34,7 @@ const DefaultDrawerConfig = {
   drawerPosition: 'left',
   drawerOpenRoute: 'DrawerOpen',
   drawerCloseRoute: 'DrawerClose',
+  drawerLockMode: 'unlocked',
   style: {},
 };
 
@@ -50,6 +51,7 @@ const DrawerNavigator = (
     drawerPosition,
     drawerOpenRoute,
     drawerCloseRoute,
+    drawerLockMode,
     style,
     ...tabsConfig
   } = mergedConfig;
@@ -89,6 +91,7 @@ const DrawerNavigator = (
       drawerPosition={drawerPosition}
       drawerOpenRoute={drawerOpenRoute}
       drawerCloseRoute={drawerCloseRoute}
+      drawerLockMode={drawerLockMode}
       style={style}
     />
   );

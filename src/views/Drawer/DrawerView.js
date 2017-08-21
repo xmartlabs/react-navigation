@@ -33,6 +33,7 @@ export type DrawerViewConfig = {
   drawerPosition: 'left' | 'right',
   drawerOpenRoute: 'DrawerOpen' | string,
   drawerCloseRoute: 'DrawerClose' | string,
+  drawerLockMode: 'unlocked' | string,
   contentComponent: ReactClass<*>,
   contentOptions?: {},
   style?: ViewStyleProp,
@@ -146,6 +147,7 @@ export default class DrawerView<T: *> extends PureComponent<void, Props, void> {
         onDrawerOpen={this._handleDrawerOpen}
         onDrawerClose={this._handleDrawerClose}
         renderNavigationView={this._renderNavigationView}
+        drawerLockMode={this.props.drawerLockMode}
         drawerPosition={
           this.props.drawerPosition === 'right'
             ? DrawerLayout.positions.Right
