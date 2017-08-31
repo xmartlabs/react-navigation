@@ -138,6 +138,18 @@ export default class DrawerView<T: *> extends PureComponent<void, Props, void> {
     const DrawerScreen = this.props.router.getComponentForRouteName(
       this.props.drawerCloseRoute
     );
+    
+    var drawerLockMode = this.props.screenProps && this.props.screenProps.lockMode;
+    if (this._screenNavigationProp.state.routes.length > 0) {
+      const topLevel = this._screenNavigationProp.state.routes[0];
+      if (topLevel.routes.length > 1) {
+        const child = topLevel.routes[topLevel.routes.length - 1];
+        if (child.params) {
+          drawerLockMode = child.params.drawerLockMode || drawerLockMode;
+        }
+      }
+    }
+    
     return (
       <DrawerLayout
         ref={(c: *) => {
@@ -147,7 +159,7 @@ export default class DrawerView<T: *> extends PureComponent<void, Props, void> {
         onDrawerOpen={this._handleDrawerOpen}
         onDrawerClose={this._handleDrawerClose}
         renderNavigationView={this._renderNavigationView}
-        drawerLockMode={this.props.drawerLockMode}
+        drawerLockMode={drawerLockMode || this.props.drawerLockMode}
         drawerPosition={
           this.props.drawerPosition === 'right'
             ? DrawerLayout.positions.Right
